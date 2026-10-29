@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Données locales (jamais commitées)
+data/
+*.parquet
+*.delta/
+
+# Volumes Docker
+minio_data/
+checkpoints/
+airflow/logs/
+dbt/logs/
+dbt/velib/target/
+dbt/velib/logs/
+dbt/velib/dbt_packages/
+
+# Secrets / config locale
+.env
+profiles.yml
+*.secret
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
