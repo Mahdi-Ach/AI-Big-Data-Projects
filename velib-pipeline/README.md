@@ -199,3 +199,5 @@ velib-pipeline/
 > Structured Streaming, Delta Lake, dbt, Airflow, Docker, PostgreSQL,
 > Grafana, GitHub Actions : pipeline temps réel de bout en bout avec
 > tests de qualité (13 tests dbt, 13 tests pytest) et CI/CD.
+
+<!-- trigger CI -->
