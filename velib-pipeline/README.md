@@ -123,12 +123,14 @@ Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/kafka/kafka-cl
 Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.0/commons-pool2-2.11.0.jar" -OutFile "spark/jars/commons-pool2-2.11.0.jar"
 Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.4/postgresql-42.7.4.jar" -OutFile "spark/jars/postgresql-42.7.4.jar"
 
-# 4. Lancer le streaming Bronze (terminal séparé, laisser tourner)
+# 4. nettoyer les checkpoints
+docker compose exec minio sh -c "rm -rf /data/checkpoints/*"
+# 5. Lancer le streaming Bronze (terminal séparé, laisser tourner)
 docker compose exec spark /opt/spark/bin/spark-submit --master "local[*]" `
   --jars /opt/spark/jars-extra/delta-spark_2.12-3.2.0.jar,/opt/spark/jars-extra/delta-storage-3.2.0.jar,/opt/spark/jars-extra/hadoop-aws-3.3.4.jar,/opt/spark/jars-extra/aws-java-sdk-bundle-1.12.262.jar,/opt/spark/jars-extra/spark-sql-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars-extra/spark-token-provider-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars-extra/kafka-clients-3.4.1.jar,/opt/spark/jars-extra/commons-pool2-2.11.0.jar `
   /opt/spark-apps/bronze_streaming.py
 
-# 5. Orchester Silver + Gold via Airflow
+# 6. Orchester Silver + Gold via Airflow
 #    → http://localhost:8082 (admin / admin), trigger le DAG velib_pipeline
 ```
 
