@@ -110,13 +110,26 @@ python -m venv .venv
 pip install requests kafka-python
 python producer/velib_producer.py
 
-# 3. Lancer le streaming Bronze (terminal séparé, laisser tourner)
-docker compose exec spark /opt/spark/bin/spark-submit --master "local[*]" \
-  --jars /opt/spark/jars-extra/delta-spark_2.12-3.2.0.jar,/opt/spark/jars-extra/delta-storage-3.2.0.jar,/opt/spark/jars-extra/hadoop-aws-3.3.4.jar,/opt/spark/jars-extra/aws-java-sdk-bundle-1.12.262.jar,/opt/spark/jars-extra/spark-sql-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars-extra/spark-token-provider-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars-extra/kafka-clients-3.4.1.jar,/opt/spark/jars-extra/commons-pool2-2.11.0.jar \
+# 3. Télécharger les JARs Spark (non versionnés, ~300 Mo)
+#    Ils sont exclus du repo car ils dépassent la limite GitHub de 100 Mo/fichier.
+New-Item -ItemType Directory -Force -Path spark/jars
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/io/delta/delta-spark_2.12/3.2.0/delta-spark_2.12-3.2.0.jar" -OutFile "spark/jars/delta-spark_2.12-3.2.0.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/io/delta/delta-storage/3.2.0/delta-storage-3.2.0.jar" -OutFile "spark/jars/delta-storage-3.2.0.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.4/hadoop-aws-3.3.4.jar" -OutFile "spark/jars/hadoop-aws-3.3.4.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.262/aws-java-sdk-bundle-1.12.262.jar" -OutFile "spark/jars/aws-java-sdk-bundle-1.12.262.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.12/3.5.0/spark-sql-kafka-0-10_2.12-3.5.0.jar" -OutFile "spark/jars/spark-sql-kafka-0-10_2.12-3.5.0.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_2.12/3.5.0/spark-token-provider-kafka-0-10_2.12-3.5.0.jar" -OutFile "spark/jars/spark-token-provider-kafka-0-10_2.12-3.5.0.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/3.4.1/kafka-clients-3.4.1.jar" -OutFile "spark/jars/kafka-clients-3.4.1.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.11.0/commons-pool2-2.11.0.jar" -OutFile "spark/jars/commons-pool2-2.11.0.jar"
+Invoke-WebRequest -Uri "https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.4/postgresql-42.7.4.jar" -OutFile "spark/jars/postgresql-42.7.4.jar"
+
+# 4. Lancer le streaming Bronze (terminal séparé, laisser tourner)
+docker compose exec spark /opt/spark/bin/spark-submit --master "local[*]" `
+  --jars /opt/spark/jars-extra/delta-spark_2.12-3.2.0.jar,/opt/spark/jars-extra/delta-storage-3.2.0.jar,/opt/spark/jars-extra/hadoop-aws-3.3.4.jar,/opt/spark/jars-extra/aws-java-sdk-bundle-1.12.262.jar,/opt/spark/jars-extra/spark-sql-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars-extra/spark-token-provider-kafka-0-10_2.12-3.5.0.jar,/opt/spark/jars-extra/kafka-clients-3.4.1.jar,/opt/spark/jars-extra/commons-pool2-2.11.0.jar `
   /opt/spark-apps/bronze_streaming.py
 
-# 4. Orchester Silver + Gold via Airflow
-# → http://localhost:8082 (admin / admin), trigger le DAG velib_pipeline
+# 5. Orchester Silver + Gold via Airflow
+#    → http://localhost:8082 (admin / admin), trigger le DAG velib_pipeline
 ```
 
 **Interfaces** :
