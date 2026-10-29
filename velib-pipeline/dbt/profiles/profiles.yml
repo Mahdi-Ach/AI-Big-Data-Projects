@@ -1,0 +1,12 @@
+velib:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      port: 5432
+      user: velib
+      password: velib123
+      dbname: velib
+      schema: public
+      threads: 2

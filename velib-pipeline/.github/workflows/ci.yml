@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install ruff pytest requests kafka-python
+
+      - name: Lint with ruff
+        run: ruff check spark/ producer/ --exclude spark/tests
+        working-directory: velib-pipeline
+
+      - name: Run unit tests
+        run: pytest spark/tests/ -v
+        working-directory: velib-pipeline
+
+  dbt-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: pip install dbt-postgres
+
+      - name: dbt compile (parse only)
+        working-directory: velib-pipeline/dbt/velib
+        run: |
+          mkdir -p /home/runner/.dbt
+          cat > /home/runner/.dbt/profiles.yml << 'EOF'
+          velib:
+            target: dev
+            outputs:
+              dev:
+                type: postgres
+                host: localhost
+                port: 5432
+                user: velib
+                password: velib123
+                dbname: velib
+                schema: public
+                threads: 2
+          EOF
+          dbt compile --profiles-dir /home/runner/.dbt

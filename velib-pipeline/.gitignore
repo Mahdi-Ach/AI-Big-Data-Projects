@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Données locales
+data/
+*.parquet
+
+# Volumes Docker
+minio_data/
+checkpoints/
+
+# JARs (trop lourds, téléchargeables)
+spark/jars/*.jar
+
+# Secrets
+.env
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+dbt/velib/target/
+dbt/**/.user.yml
+airflow/logs/
+ingestion/
+.venv/
+.venv/

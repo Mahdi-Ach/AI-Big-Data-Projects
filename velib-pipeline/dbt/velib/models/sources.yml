@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: silver
+    schema: public
+    tables:
+      - name: silver_station_status_enriched
+        description: "Table Silver enrichie (Vélib) chargée depuis MinIO"
