@@ -6,24 +6,19 @@ venv/
 .pytest_cache/
 .ruff_cache/
 
-# Données locales (jamais commitées)
+# Données locales
 data/
 *.parquet
-*.delta/
 
 # Volumes Docker
 minio_data/
 checkpoints/
-airflow/logs/
-dbt/logs/
-dbt/velib/target/
-dbt/velib/logs/
-dbt/velib/dbt_packages/
 
-# Secrets / config locale
+# JARs (trop lourds, téléchargeables)
+spark/jars/*.jar
+
+# Secrets
 .env
-profiles.yml
-*.secret
 
 # IDE / OS
 .vscode/
