@@ -1,0 +1,74 @@
+[2026-10-29T17:39:06.139+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: velib_pipeline.run_silver manual__2026-10-29T17:39:03.471819+00:00 [queued]>
+[2026-10-29T17:39:06.147+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: velib_pipeline.run_silver manual__2026-10-29T17:39:03.471819+00:00 [queued]>
+[2026-10-29T17:39:06.148+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-29T17:39:06.160+0000] {taskinstance.py:2191} INFO - Executing <Task(DockerOperator): run_silver> on 2026-10-29 17:39:03.471819+00:00
+[2026-10-29T17:39:06.165+0000] {standard_task_runner.py:60} INFO - Started process 884 to run task
+[2026-10-29T17:39:06.169+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'velib_pipeline', 'run_silver', 'manual__2026-10-29T17:39:03.471819+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/velib_pipeline.py', '--cfg-path', '/tmp/tmp6uw22ps8']
+[2026-10-29T17:39:06.172+0000] {standard_task_runner.py:88} INFO - Job 20: Subtask run_silver
+[2026-10-29T17:39:06.232+0000] {task_command.py:423} INFO - Running <TaskInstance: velib_pipeline.run_silver manual__2026-10-29T17:39:03.471819+00:00 [running]> on host 5ab2baee794e
+[2026-10-29T17:39:06.343+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='velib' AIRFLOW_CTX_DAG_ID='velib_pipeline' AIRFLOW_CTX_TASK_ID='run_silver' AIRFLOW_CTX_EXECUTION_DATE='2026-10-29T17:39:03.471819+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-29T17:39:03.471819+00:00'
+[2026-10-29T17:39:06.468+0000] {docker.py:359} INFO - Starting docker container from image apache/spark:3.5.0
+[2026-10-29T17:39:09.212+0000] {docker.py:429} INFO - 26/10/29 17:39:09 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2026-10-29T17:39:10.101+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: Running Spark version 3.5.0
+[2026-10-29T17:39:10.103+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: OS info Linux, 6.6.87.2-microsoft-standard-WSL2, amd64
+[2026-10-29T17:39:10.104+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: Java version 11.0.20.1
+[2026-10-29T17:39:10.136+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO ResourceUtils: ==============================================================
+[2026-10-29T17:39:10.137+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO ResourceUtils: No custom resources configured for spark.driver.
+[2026-10-29T17:39:10.139+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO ResourceUtils: ==============================================================
+[2026-10-29T17:39:10.140+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: Submitted application: velib-silver
+[2026-10-29T17:39:10.163+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+[2026-10-29T17:39:10.173+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO ResourceProfile: Limiting resource is cpu
+[2026-10-29T17:39:10.174+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO ResourceProfileManager: Added ResourceProfile id: 0
+[2026-10-29T17:39:10.238+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SecurityManager: Changing view acls to: spark
+[2026-10-29T17:39:10.239+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SecurityManager: Changing modify acls to: spark
+[2026-10-29T17:39:10.240+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SecurityManager: Changing view acls groups to:
+[2026-10-29T17:39:10.242+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SecurityManager: Changing modify acls groups to:
+[2026-10-29T17:39:10.242+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: spark; groups with view permissions: EMPTY; users with modify permissions: spark; groups with modify permissions: EMPTY
+[2026-10-29T17:39:10.460+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Utils: Successfully started service 'sparkDriver' on port 44217.
+[2026-10-29T17:39:10.487+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkEnv: Registering MapOutputTracker
+[2026-10-29T17:39:10.518+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkEnv: Registering BlockManagerMaster
+[2026-10-29T17:39:10.539+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+[2026-10-29T17:39:10.540+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+[2026-10-29T17:39:10.546+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+[2026-10-29T17:39:10.567+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-c54126c9-6377-46ba-b1ee-b3a80f21f577
+[2026-10-29T17:39:10.581+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+[2026-10-29T17:39:10.597+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkEnv: Registering OutputCommitCoordinator
+[2026-10-29T17:39:10.747+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+[2026-10-29T17:39:10.810+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+[2026-10-29T17:39:10.844+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: Added JAR file:///opt/spark/jars-extra/delta-spark_2.12-3.2.0.jar at spark://4a6052c88dad:44217/jars/delta-spark_2.12-3.2.0.jar with timestamp 1793295550088
+[2026-10-29T17:39:10.845+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: Added JAR file:///opt/spark/jars-extra/delta-storage-3.2.0.jar at spark://4a6052c88dad:44217/jars/delta-storage-3.2.0.jar with timestamp 1793295550088
+26/10/29 17:39:10 INFO SparkContext: Added JAR file:///opt/spark/jars-extra/hadoop-aws-3.3.4.jar at spark://4a6052c88dad:44217/jars/hadoop-aws-3.3.4.jar with timestamp 1793295550088
+[2026-10-29T17:39:10.846+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO SparkContext: Added JAR file:///opt/spark/jars-extra/aws-java-sdk-bundle-1.12.262.jar at spark://4a6052c88dad:44217/jars/aws-java-sdk-bundle-1.12.262.jar with timestamp 1793295550088
+26/10/29 17:39:10 INFO SparkContext: Added JAR file:///opt/spark/jars-extra/postgresql-42.7.4.jar at spark://4a6052c88dad:44217/jars/postgresql-42.7.4.jar with timestamp 1793295550088
+[2026-10-29T17:39:10.910+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Executor: Starting executor ID driver on host 4a6052c88dad
+26/10/29 17:39:10 INFO Executor: OS info Linux, 6.6.87.2-microsoft-standard-WSL2, amd64
+[2026-10-29T17:39:10.911+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Executor: Java version 11.0.20.1
+[2026-10-29T17:39:10.918+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+[2026-10-29T17:39:10.919+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@68813784 for default.
+[2026-10-29T17:39:10.933+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Executor: Fetching spark://4a6052c88dad:44217/jars/delta-storage-3.2.0.jar with timestamp 1793295550088
+[2026-10-29T17:39:10.986+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO TransportClientFactory: Successfully created connection to 4a6052c88dad/172.18.0.10:44217 after 29 ms (0 ms spent in bootstraps)
+[2026-10-29T17:39:10.995+0000] {docker.py:429} INFO - 26/10/29 17:39:10 INFO Utils: Fetching spark://4a6052c88dad:44217/jars/delta-storage-3.2.0.jar to /tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/fetchFileTemp6786669224119895177.tmp
+[2026-10-29T17:39:11.034+0000] {docker.py:429} INFO - 26/10/29 17:39:11 INFO Executor: Adding file:/tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/delta-storage-3.2.0.jar to class loader default
+26/10/29 17:39:11 INFO Executor: Fetching spark://4a6052c88dad:44217/jars/aws-java-sdk-bundle-1.12.262.jar with timestamp 1793295550088
+[2026-10-29T17:39:11.036+0000] {docker.py:429} INFO - 26/10/29 17:39:11 INFO Utils: Fetching spark://4a6052c88dad:44217/jars/aws-java-sdk-bundle-1.12.262.jar to /tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/fetchFileTemp15225422876397286175.tmp
+[2026-10-29T17:39:14.058+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Adding file:/tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/aws-java-sdk-bundle-1.12.262.jar to class loader default
+[2026-10-29T17:39:14.060+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Fetching spark://4a6052c88dad:44217/jars/postgresql-42.7.4.jar with timestamp 1793295550088
+[2026-10-29T17:39:14.062+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Utils: Fetching spark://4a6052c88dad:44217/jars/postgresql-42.7.4.jar to /tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/fetchFileTemp919921530972479196.tmp
+[2026-10-29T17:39:14.116+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Adding file:/tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/postgresql-42.7.4.jar to class loader default
+[2026-10-29T17:39:14.118+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Fetching spark://4a6052c88dad:44217/jars/delta-spark_2.12-3.2.0.jar with timestamp 1793295550088
+[2026-10-29T17:39:14.120+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Utils: Fetching spark://4a6052c88dad:44217/jars/delta-spark_2.12-3.2.0.jar to /tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/fetchFileTemp14348606967382097979.tmp
+[2026-10-29T17:39:14.303+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Adding file:/tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/delta-spark_2.12-3.2.0.jar to class loader default
+[2026-10-29T17:39:14.304+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Fetching spark://4a6052c88dad:44217/jars/hadoop-aws-3.3.4.jar with timestamp 1793295550088
+[2026-10-29T17:39:14.304+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Utils: Fetching spark://4a6052c88dad:44217/jars/hadoop-aws-3.3.4.jar to /tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/fetchFileTemp8301565394958019706.tmp
+[2026-10-29T17:39:14.348+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Executor: Adding file:/tmp/spark-9d60c616-b3f2-418d-be2f-88786a02a3c6/userFiles-3aff2694-6eae-47db-bb3b-fa7e5c189696/hadoop-aws-3.3.4.jar to class loader default
+[2026-10-29T17:39:14.372+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41345.
+[2026-10-29T17:39:14.373+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO NettyBlockTransferService: Server created on 4a6052c88dad:41345
+[2026-10-29T17:39:14.377+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+[2026-10-29T17:39:14.393+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 4a6052c88dad, 41345, None)
+[2026-10-29T17:39:14.403+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO BlockManagerMasterEndpoint: Registering block manager 4a6052c88dad:41345 with 434.4 MiB RAM, BlockManagerId(driver, 4a6052c88dad, 41345, None)
+[2026-10-29T17:39:14.409+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 4a6052c88dad, 41345, None)
+[2026-10-29T17:39:14.413+0000] {docker.py:429} INFO - 26/10/29 17:39:14 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 4a6052c88dad, 41345, None)
+[2026-10-29T17:39:50.075+0000] {docker.py:429} INFO - Silver écrit : 218880 lignes
+[2026-10-29T17:39:51.134+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=velib_pipeline, task_id=run_silver, execution_date=20261029T173903, start_date=20261029T173906, end_date=20261029T173951
+[2026-10-29T17:39:51.182+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-29T17:39:51.217+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

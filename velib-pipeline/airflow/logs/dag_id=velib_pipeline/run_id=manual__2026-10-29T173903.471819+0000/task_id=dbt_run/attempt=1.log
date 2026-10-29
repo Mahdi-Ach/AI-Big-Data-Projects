@@ -1,0 +1,34 @@
+[2026-10-29T17:41:08.591+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: velib_pipeline.dbt_run manual__2026-10-29T17:39:03.471819+00:00 [queued]>
+[2026-10-29T17:41:08.605+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: velib_pipeline.dbt_run manual__2026-10-29T17:39:03.471819+00:00 [queued]>
+[2026-10-29T17:41:08.606+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-10-29T17:41:08.625+0000] {taskinstance.py:2191} INFO - Executing <Task(DockerOperator): dbt_run> on 2026-10-29 17:39:03.471819+00:00
+[2026-10-29T17:41:08.632+0000] {standard_task_runner.py:60} INFO - Started process 910 to run task
+[2026-10-29T17:41:08.637+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'velib_pipeline', 'dbt_run', 'manual__2026-10-29T17:39:03.471819+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/velib_pipeline.py', '--cfg-path', '/tmp/tmppkmnqj5q']
+[2026-10-29T17:41:08.640+0000] {standard_task_runner.py:88} INFO - Job 23: Subtask dbt_run
+[2026-10-29T17:41:08.713+0000] {task_command.py:423} INFO - Running <TaskInstance: velib_pipeline.dbt_run manual__2026-10-29T17:39:03.471819+00:00 [running]> on host 5ab2baee794e
+[2026-10-29T17:41:08.851+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='velib' AIRFLOW_CTX_DAG_ID='velib_pipeline' AIRFLOW_CTX_TASK_ID='dbt_run' AIRFLOW_CTX_EXECUTION_DATE='2026-10-29T17:39:03.471819+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-10-29T17:39:03.471819+00:00'
+[2026-10-29T17:41:08.971+0000] {docker.py:359} INFO - Starting docker container from image python:3.11-slim
+[2026-10-29T17:41:46.446+0000] {docker.py:429} INFO - WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[2026-10-29T17:41:46.458+0000] {docker.py:429} INFO - [notice] A new release of pip is available: 24.0 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+[2026-10-29T17:41:50.571+0000] {docker.py:429} INFO - [0m17:41:50  Running with dbt=1.13.0-b1
+[2026-10-29T17:41:50.856+0000] {docker.py:429} INFO - [0m17:41:50  Registered adapter: postgres=1.11.0
+[2026-10-29T17:41:51.274+0000] {docker.py:429} INFO - [0m17:41:51  Found 3 models, 13 data tests, 1 source, 478 macros
+[2026-10-29T17:41:51.275+0000] {docker.py:429} INFO - [0m17:41:51
+[2026-10-29T17:41:51.277+0000] {docker.py:429} INFO - [0m17:41:51  Concurrency: 2 threads (target='dev')
+[2026-10-29T17:41:51.277+0000] {docker.py:429} INFO - [0m17:41:51
+[2026-10-29T17:41:51.396+0000] {docker.py:429} INFO - [0m17:41:51  1 of 3 START sql table model gold.gold_remplissage_horaire ..................... [RUN]
+[2026-10-29T17:41:51.397+0000] {docker.py:429} INFO - [0m17:41:51  2 of 3 START sql table model gold.gold_stations_tension ........................ [RUN]
+[2026-10-29T17:41:51.924+0000] {docker.py:429} INFO - [0m17:41:51  2 of 3 OK created sql table model gold.gold_stations_tension ................... [[32mSELECT 1496[0m in 0.52s]
+[2026-10-29T17:41:51.925+0000] {docker.py:429} INFO - [0m17:41:51  3 of 3 START sql table model gold.gold_tendances_arrondissement ................ [RUN]
+[2026-10-29T17:41:52.513+0000] {docker.py:429} INFO - [0m17:41:52  1 of 3 OK created sql table model gold.gold_remplissage_horaire ................ [[32mSELECT 5984[0m in 1.11s]
+[2026-10-29T17:41:52.781+0000] {docker.py:429} INFO - [0m17:41:52  3 of 3 OK created sql table model gold.gold_tendances_arrondissement ........... [[32mSELECT 20[0m in 0.85s]
+[2026-10-29T17:41:52.797+0000] {docker.py:429} INFO - [0m17:41:52
+[2026-10-29T17:41:52.798+0000] {docker.py:429} INFO - [0m17:41:52  Finished running 3 table models in 0 hours 0 minutes and 1.52 seconds (1.52s).
+[2026-10-29T17:41:52.843+0000] {docker.py:429} INFO - [0m17:41:52  
+[0m17:41:52  [32mCompleted successfully[0m
+[2026-10-29T17:41:52.845+0000] {docker.py:429} INFO - [0m17:41:52  
+[0m17:41:52  Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=3
+[2026-10-29T17:41:54.539+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=velib_pipeline, task_id=dbt_run, execution_date=20261029T173903, start_date=20261029T174108, end_date=20261029T174154
+[2026-10-29T17:41:54.608+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-10-29T17:41:54.644+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
