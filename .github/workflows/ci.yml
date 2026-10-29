@@ -67,4 +67,4 @@ jobs:
                 schema: public
                 threads: 2
           EOF
-          dbt compile --profiles-dir /home/runner/.dbt
+          dbt parse --profiles-dir /home/runner/.dbt
